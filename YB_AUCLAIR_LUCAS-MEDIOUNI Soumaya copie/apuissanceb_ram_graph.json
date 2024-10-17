@@ -1,0 +1,87 @@
+{
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+        {
+            "command": "ADD",
+            "args": [
+                "I1",
+                0,
+                "R0"
+            ],
+            "id": 0
+        },
+        {
+            "command": "ADD",
+            "args": [
+                "I2",
+                0,
+                "R1"
+            ],
+            "id": 1
+        },
+        {
+            "command": "MULT",
+            "args": [
+                "R0",
+                "I1",
+                "R0"
+            ],
+            "id": 2
+        },
+        {
+            "command": "SUB",
+            "args": [
+                "R1",
+                1,
+                "R1"
+            ],
+            "id": 3
+        },
+        {
+            "command": "JGT",
+            "args": [
+                "R1",
+                1,
+                -2
+            ],
+            "id": 4
+        },
+        {
+            "command": "ADD",
+            "args": [
+                "R0",
+                0,
+                "O0"
+            ],
+            "id": 5
+        }
+    ],
+    "links": [
+        {
+            "source": 0,
+            "target": 1
+        },
+        {
+            "source": 1,
+            "target": 2
+        },
+        {
+            "source": 2,
+            "target": 3
+        },
+        {
+            "source": 3,
+            "target": 4
+        },
+        {
+            "source": 4,
+            "target": 2
+        },
+        {
+            "source": 4,
+            "target": 5
+        }
+    ]
+}

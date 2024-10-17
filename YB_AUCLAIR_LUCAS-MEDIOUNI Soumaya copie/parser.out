@@ -1,0 +1,99 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    ADD
+    BREAK
+    DIV
+    MOD
+    MULT
+
+Grammar
+
+Rule 0     S' -> code
+Rule 1     code -> LIGNE
+Rule 2     code -> code LIGNE
+Rule 3     code -> code WHILE
+Rule 4     code -> code IF
+
+Terminals, with rules where they appear
+
+ADD                  : 
+BREAK                : 
+DIV                  : 
+IF                   : 4
+LIGNE                : 1 2
+MOD                  : 
+MULT                 : 
+WHILE                : 3
+error                : 
+
+Nonterminals, with rules where they appear
+
+code                 : 2 3 4 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . code
+    (1) code -> . LIGNE
+    (2) code -> . code LIGNE
+    (3) code -> . code WHILE
+    (4) code -> . code IF
+
+    LIGNE           shift and go to state 2
+
+    code                           shift and go to state 1
+
+state 1
+
+    (0) S' -> code .
+    (2) code -> code . LIGNE
+    (3) code -> code . WHILE
+    (4) code -> code . IF
+
+    LIGNE           shift and go to state 3
+    WHILE           shift and go to state 4
+    IF              shift and go to state 5
+
+
+state 2
+
+    (1) code -> LIGNE .
+
+    LIGNE           reduce using rule 1 (code -> LIGNE .)
+    WHILE           reduce using rule 1 (code -> LIGNE .)
+    IF              reduce using rule 1 (code -> LIGNE .)
+    $end            reduce using rule 1 (code -> LIGNE .)
+
+
+state 3
+
+    (2) code -> code LIGNE .
+
+    LIGNE           reduce using rule 2 (code -> code LIGNE .)
+    WHILE           reduce using rule 2 (code -> code LIGNE .)
+    IF              reduce using rule 2 (code -> code LIGNE .)
+    $end            reduce using rule 2 (code -> code LIGNE .)
+
+
+state 4
+
+    (3) code -> code WHILE .
+
+    LIGNE           reduce using rule 3 (code -> code WHILE .)
+    WHILE           reduce using rule 3 (code -> code WHILE .)
+    IF              reduce using rule 3 (code -> code WHILE .)
+    $end            reduce using rule 3 (code -> code WHILE .)
+
+
+state 5
+
+    (4) code -> code IF .
+
+    LIGNE           reduce using rule 4 (code -> code IF .)
+    WHILE           reduce using rule 4 (code -> code IF .)
+    IF              reduce using rule 4 (code -> code IF .)
+    $end            reduce using rule 4 (code -> code IF .)
+
